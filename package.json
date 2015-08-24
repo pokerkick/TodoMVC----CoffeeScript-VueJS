@@ -1,9 +1,41 @@
 {
-	"private": true,
-	"dependencies": {
-		"director": "",
-		"vue": "",
-		"todomvc-common": "",
-		"todomvc-app-css": ""
-	}
+  "private": true,
+  "dependencies": {
+    "browser-sync": "^2.8.2",
+    "director": "",
+    "firebase": "^2.2.9",
+    "gulp-coffee": "^2.3.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-uglify": "^1.2.0",
+    "todomvc-app-css": "^2.0.1",
+    "todomvc-common": "",
+    "vue": "^0.12.10"
+  },
+  "name": "coffeescript-todo",
+  "description": ">CoffeeScript is an abstracted language variation on Javascript, with the goal of simplifying the process coding web scripting by making a more readable code. \r >Whilst being very legible to the layperson not trained in Javascript, CoffeeScript still compiles directly to Javascript before being implemented in the overall application.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "webpack": "^1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pokerkick/TodoMVC----CoffeeScript-VueJS.git"
+  },
+  "author": "Christopher J Wallace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pokerkick/TodoMVC----CoffeeScript-VueJS/issues"
+  },
+  "homepage": "https://github.com/pokerkick/TodoMVC----CoffeeScript-VueJS#readme"
 }

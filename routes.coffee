@@ -1,3 +1,13 @@
-/*global app, Router */
+(app , Router) ->
+	router = new Router
 
-	router = Router()
+	['all', 'active', 'completed'].forEach = (visibility) -> 
+		router.on(visibility,  ->
+			app.visibility = visibility
+			)
+	router.configure
+		notfound: ->
+			window.location.hash = ''
+			app.visibility = 'all'
+
+	router.init

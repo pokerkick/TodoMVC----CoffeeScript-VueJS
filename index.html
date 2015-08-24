@@ -9,31 +9,31 @@
 	<section class="todoapp" >
 		<header class="header">
 			<h1>todos</h1>
-			<input class="new-todo" >
+			<input class="new-todo" autofocus autocomplete = "off" placeholder="List your tasks to be done:" v-model="newTodo" v-on="keyup:addTodo | key 'enter'">
 		</header>
-		<section class="main" >
+		<section class="main" v-show = "todos.length" v-cloak >
 			<input class="toggle-all" type="checkbox" v-model="allDone">
 			<ul class="todo-list">
-				<li class="todo" >
+				<li class="todo" v-repeat="todo: filteredTodos" v-class="completed: todo.completed, editing: todo == editedTodo">
 					<div class="view">
-						<input class="toggle" type="checkbox" >
-						<label ></label>
-						<button class="destroy" ></button>
+						<input class="toggle" type="checkbox" v-model="todo.completed" >
+						<label v-on:"dblclick: editTodo(todo)">{{ todo.title }}</label>
+						<button class="destroy" v-on:"click: removeTodo(todo)"></button>
 					</div>
-					<input class="edit" type="text" >
+					<input class="edit" type="text" v-model="todo.title" v-todo-focus="todo == editedTodo" v-on= "blur: doneEdit(todo), keyup: doneEdit(todo) | key 'enter', keyup: cancelEdit(todo) | key 'esc'">
 				</li>
 			</ul>
 		</section>
-		<footer class="footer" >
+		<footer class="footer" v-show="todos.length" v-cloak>
 			<span class="todo-count">
-				<strong></strong>
+				<strong v-text="remaining"></strong>{{ remaining | pluralise 'item'}} left
 			</span>
 			<ul class="filters">
-				<li><a href="#/all">All</a></li>
-				<li><a href="#/active">Active</a></li>
-				<li><a href="#/completed">Completed</a></li>
+				<li><a href="#/all" v-class="selected: visibility == 'all">All</a></li>
+				<li><a href="#/active" v-class="selected: visibility == 'active'">Active</a></li>
+				<li><a href="#/completed" v-class="selected: visibility == 'completed'">Completed</a></li>
 			</ul>
-			<button class="clear-completed">Clear completed
+			<button class="clear-completed" v-on="click: removeCompleted" v-show="todos.length > remaining">Clear completed
 			</button>
 		</footer>
 	</section>

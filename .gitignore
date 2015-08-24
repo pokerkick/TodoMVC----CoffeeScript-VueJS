@@ -5,6 +5,9 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+#browser-sync
+C:\Users\r m kaer\Documents\devvy\TodoMVC----CoffeeScript-VueJS\node_modules\browser-sync
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 

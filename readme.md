@@ -6,6 +6,8 @@
 >Vue.js is one of many MV* libraries, specifically targeting web interfaces.
 Vue focuses on a data-centric approach, with nesting view components.
 
+>Furthermore, this particular example will be using gulpjs, webkit, and Firebase as additional parts to the overall sum. I, pokerkick, may fork off a version to use these so that the master branch can stay as close to base Todo examples as possible.
+
 ##Credit
 
 This TodoMVC application was created by {Christopher Wallace},
