@@ -12,34 +12,34 @@ var gulp = require('gulp'),
 // //////////////////////////////////////////////
 // Script Task
 // ////////////////////////////////////////////
-gulp.task('scripts', function(){
+gulp.task('scripts', ['coffee'], function(){
 	//console.log('Speak Fools!');
-	gulp.src([ 'js/**/*.s','!js/**/*.min.js'])
+	gulp.src([ './build/*.js','!./.min.js'])
 	.pipe(plumber())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(uglify())
-	.pipe(gulp.dest('/build'));
+	.pipe(gulp.dest('./build/'));
 });
 // //////////////////////////////////////////////
 // Speak Fools!
 // ////////////////////////////////////////////
-gulp.task('coffee', function) {
-	gulp.src('/**/*.coffee')
+gulp.task('coffee', function() {
+	gulp.src('./*.coffee')
 	.pipe(plumber())
 	.pipe(coffee({bare: true}).on('error', gutil.log))
-	.pipe(gulp.dest('/build'));
-}
+	.pipe(gulp.dest('./build/'));
+});
 // //////////////////////////////////////////////
 // Html Task
 // ////////////////////////////////////////////
 gulp.task('html', function(){
-	gulp.src('/**/*.html');
+	gulp.src('./*.html');
 })
 // //////////////////////////////////////////////
 // Webpack Task
 // ////////////////////////////////////////////
 
-gulp.task("webpack", function(cb) {
+/*gulp.task('webpack', function(cb) {
     // run webpack
     webpack({
         // configuration
@@ -50,12 +50,12 @@ gulp.task("webpack", function(cb) {
         }));
         cb();
     });
-});
+});*/
 // //////////////////////////////////////////////
 // Build Task
 // ////////////////////////////////////////////
 // task to
-gulp.task('build:cleanfolder', function(cb) {
+/*gulp.task('build:cleanfolder', function(cb) {
 	del([
 		'build/**'
 		], cb);
@@ -64,24 +64,24 @@ gulp.task('build:cleanfolder', function(cb) {
 // task to
 // task to
 gulp.task('build:copy', ['build:cleanfolder'], function(){
-	return gulp.src(./)
-	.pipe(gulp.dest('build/'))
+	return gulp.src('./')
+	.pipe(gulp.dest('/build'))
 })
 // task to
 gulp.task('build:remove', ['build:copy'], function(cb) {
 	del([
-		'build/js/!(*.min.js)'
+		'/build/js/!(*.min.js)'
 	], cb);
 })
-gulp.task('build', ['build:copy', 'build:remove'])
+gulp.task('build', ['build:copy', 'build:remove'])*/
 // //////////////////////////////////////////////
 // Watch Task
 // ////////////////////////////////////////////
-gulp.task('watch', function(){
-	gulp.watch('js/**/*.js', ['scripts']);
-	gulp.watch('/**/*/html', ['html']);
-})
+//gulp.task('watch', function(){
+//	gulp.watch('js/**/*.js', ['scripts']);
+//	gulp.watch('/**/*/html', ['html']);
+//})
 // //////////////////////////////////////////////
 // Default Task
 // ////////////////////////////////////////////
-gulp.task('default',['scripts','watch']);
+gulp.task('default',['coffee', 'scripts']);

@@ -1,0 +1,37 @@
+(function(exports) {
+  'use strict';
+  var Firebase, STORAGE_KEY, mainRef;
+  STORAGE_KEY = 'todos-vuejs';
+  Firebase = require('firebase');
+  mainRef = new Firebase("https://incandescent-heat-4447.firebaseio.com");
+  var postRef = mainRef.child('/todos-coffee-vue');
+  exports.todoStorage = {
+    fetch: function() {
+      //return JSON.parse(postRef.getItem(STORAGE_KEY) || '[]');
+      return JSON.parse(postRef.get(STORAGE_KEY) || '[]');
+    },
+    save: function(todos) {
+      //postRef.setItem(STORAGE_KEY, JSON.stringify(todos));
+      var newPostRef = postRef.push();
+      PostRef.update(STORAGE_KEY, JSON.stringify(todos));
+    }
+  };
+/*
+users = todos
+newUser = newTodos
+dont worry about email or name
+
+todos.on('child-added', function(snapshot) {
+  var item = snapshot.val()
+  item.id = snapshot.key()
+  app.todos.push(item)
+})
+user.on('child-removed', function(snapshot) {
+  var id = snapshot.key()
+  app.users.some(function (user) {
+    if (user.id === id) {
+      app.users.$remove(user)
+      return true
+    }
+  })
+})*/
