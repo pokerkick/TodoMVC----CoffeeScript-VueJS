@@ -1,9 +1,9 @@
-( =(exports) ->
+( (exports) ->
 	'use strict'
 	filters = 
 		all: (todos) -> 
 			todos
-		archive: (todos) -> 
+		active: (todos) -> 
 			todos.filter  (todo) -> 
 				!todo.completed
 		completed: (todos) -> 
@@ -43,7 +43,7 @@
 				get: ->
 					this.remaining is 0
 				set: (value) ->
-					this.todos.forEach = (todo) -> 
+					this.todos.forEach  (todo) -> 
 						todo.completed = value
 						return
 					return

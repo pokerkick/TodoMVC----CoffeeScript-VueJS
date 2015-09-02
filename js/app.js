@@ -1,15 +1,14 @@
-
-(function (exports) {
+(function(exports) {
   'use strict';
   var filters;
   filters = {
     all: function(todos) {
       return todos;
     },
-    archive: function(todos) {
+    active: function(todos) {
       return todos.filter(function(todo) {
-              return !todo.completed;
-            });
+        return !todo.completed;
+      });
     },
     completed: function(todos) {
       return todos.filter(function(todo) {
@@ -56,9 +55,9 @@
           return this.remaining === 0;
         },
         set: function(value) {
-          this.todos.forEach = function(todo) {
+          this.todos.forEach(function(todo) {
             todo.completed = value;
-          };
+          });
         }
       }
     },
