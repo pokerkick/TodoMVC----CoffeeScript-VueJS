@@ -1,16 +1,20 @@
 (function(exports) {
   'use strict';
-  var Firebase, STORAGE_KEY, mainRef;
-  STORAGE_KEY = 'todos-vuejs';
-  //Firebase = require('firebase');
-  //mainRef = new Firebase("https://incandescent-heat-4447.firebaseio.com");
-  //mainRef.child('/todos-coffee-vue');
+  var mainRef, todos;
+  mainRef = new Firebase('https://incandescent-heat-4447.firebaseio.com');
+  todos = [];
   exports.todoStorage = {
     fetch: function() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      mainRef.child('/todos').on('child_added', function(child) {
+        var key, value;
+        key = child.key();
+        value = child.val();
+        return todos.push(value);
+      });
+      return todos;
     },
-    save: function(todos) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+    push: function(todo) {
+      return mainRef.child('/todos').push(todo);
     }
   };
 })(window);

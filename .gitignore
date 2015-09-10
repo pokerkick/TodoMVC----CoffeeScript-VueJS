@@ -1,3 +1,6 @@
+# Exclude compiled files
+build/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

@@ -45,12 +45,14 @@
 			<p>Written by Christopher 'Needs more Coffee' Wallace<a href=""></a></p>
 			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 		</footer>
+		<!-- FIXME: require Firebase node package with Webpack -->
+		<script src="lib/firebase.js"></script>
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/director/build/director.js"></script>
 		<script src="node_modules/vue/dist/vue.js"></script>
-		<script src="js/store.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/routes.js"></script>
+		<script src="build/store.js"></script>
+		<script src="build/app.js"></script>
+		<script src="build/routes.js"></script>
 	</body>
 
 </html>

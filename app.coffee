@@ -12,18 +12,12 @@
 
 	exports.app = new Vue
 		el: ' .todoapp'
-		data:{
+		data: {
 			todos: todoStorage.fetch()
 			newTodo: ''
 			editedTodo: null
 			visibility: 'all'
 		}
-		ready: ->
-			this.$watch('todos',  (todos) -> 
-				todoStorage.save(todos)
-				return
-			{deep: true} )
-			return 
 		directives: 
 			'todo-focus': (value) -> 
 				if !value
@@ -54,7 +48,12 @@
 				value = this.newTodo and this.newTodo.trim()
 				if !value
 					return
-				this.todos.push({ title: value, completed: false})
+				# NOTE: this will be handled by Firebase
+				# this.todos.push({ title: value, completed: false})
+				todoStorage.push
+					title: value
+					completed: false
+
 				this.newTodo = ''
 				return
 			removeTodo: (todo) ->

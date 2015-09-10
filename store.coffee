@@ -1,14 +1,24 @@
 ( (exports) ->
 		'use strict'
-		STORAGE_KEY = 'todos-vuejs'
-		##Firebase = require('firebase')
-		##mainRef = new Firebase("https://incandescent-heat-4447.firebaseio.com")
-		##mainRef.child('/todos-coffee-vue')
+
+		mainRef = new Firebase 'https://incandescent-heat-4447.firebaseio.com'
+
+		todos = []
+
 		exports.todoStorage = 
 			fetch: ->
-				JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
-			save: (todos) -> 
-				localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
-				return
+				mainRef.child '/todos'
+					.on 'child_added', (child) ->
+						key = child.key()
+						value = child.val()
+
+						todos.push value # TODO: order array by some attribute
+
+				todos
+
+			push: (todo) ->
+				mainRef.child '/todos'
+					.push todo
+
 		return) \
 (window)
